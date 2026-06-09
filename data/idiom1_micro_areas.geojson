@@ -1,0 +1,173 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "258",
+        "name": "French Polynesia",
+        "iso_a3": "PYF",
+        "lat": -17.7,
+        "lon": -149.5,
+        "reef_area_sqkm": 5981.0,
+        "local_threatened_pct": 24.0,
+        "local_plus_thermal_threatened_pct": 33.0,
+        "coastal_pop_30km_thousands": 269.0,
+        "reef_in_mpa_pct": 1.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -152.1,
+              -20.3
+            ],
+            [
+              -146.9,
+              -20.3
+            ],
+            [
+              -146.9,
+              -15.1
+            ],
+            [
+              -152.1,
+              -15.1
+            ],
+            [
+              -152.1,
+              -20.3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "462",
+        "name": "Maldives",
+        "iso_a3": "MDV",
+        "lat": 3.5,
+        "lon": 73.0,
+        "reef_area_sqkm": 5281.0,
+        "local_threatened_pct": 38.0,
+        "local_plus_thermal_threatened_pct": 87.0,
+        "coastal_pop_30km_thousands": 357.0,
+        "reef_in_mpa_pct": 0.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              70.4,
+              0.8999999999999999
+            ],
+            [
+              75.6,
+              0.8999999999999999
+            ],
+            [
+              75.6,
+              6.1
+            ],
+            [
+              70.4,
+              6.1
+            ],
+            [
+              70.4,
+              0.8999999999999999
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "583",
+        "name": "Federated States of Micronesia",
+        "iso_a3": "FSM",
+        "lat": 6.9,
+        "lon": 158.2,
+        "reef_area_sqkm": 4925.0,
+        "local_threatened_pct": 30.0,
+        "local_plus_thermal_threatened_pct": 52.0,
+        "coastal_pop_30km_thousands": 100.0,
+        "reef_in_mpa_pct": 0.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              155.6,
+              4.300000000000001
+            ],
+            [
+              160.79999999999998,
+              4.300000000000001
+            ],
+            [
+              160.79999999999998,
+              9.5
+            ],
+            [
+              155.6,
+              9.5
+            ],
+            [
+              155.6,
+              4.300000000000001
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "",
+        "name": "Hawaii (US)",
+        "iso_a3": "HAW",
+        "lat": 20.5,
+        "lon": -157.5,
+        "reef_area_sqkm": 3834.0,
+        "local_threatened_pct": 17.0,
+        "local_plus_thermal_threatened_pct": 28.0,
+        "coastal_pop_30km_thousands": 1209.0,
+        "reef_in_mpa_pct": 85.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -160.5,
+              17.5
+            ],
+            [
+              -154.5,
+              17.5
+            ],
+            [
+              -154.5,
+              23.5
+            ],
+            [
+              -160.5,
+              23.5
+            ],
+            [
+              -160.5,
+              17.5
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

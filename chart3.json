@@ -1,0 +1,273 @@
+﻿{
+    "$schema":  "https://vega.github.io/schema/vega/v5.json",
+    "width":  620,
+    "height":  420,
+    "background":  "#0d2a3d",
+    "padding":  {
+                    "left":  20,
+                    "right":  20,
+                    "top":  20,
+                    "bottom":  20
+                },
+    "data":  [
+                 {
+                     "name":  "nodes",
+                     "values":  [
+                                    {
+                                        "id":  0,
+                                        "name":  "GBR Economy\n$9.0B",
+                                        "x0":  20,
+                                        "x1":  42,
+                                        "y0":  135,
+                                        "y1":  285,
+                                        "color":  "#0096c7"
+                                    },
+                                    {
+                                        "id":  1,
+                                        "name":  "Tourism",
+                                        "x0":  245,
+                                        "x1":  267,
+                                        "y0":  55,
+                                        "y1":  185,
+                                        "color":  "#0096c7"
+                                    },
+                                    {
+                                        "id":  2,
+                                        "name":  "Commercial Fishing\n\u0026 Aquaculture",
+                                        "x0":  245,
+                                        "x1":  267,
+                                        "y0":  198,
+                                        "y1":  238,
+                                        "color":  "#0096c7"
+                                    },
+                                    {
+                                        "id":  3,
+                                        "name":  "Scientific Research\n\u0026 Conservation",
+                                        "x0":  245,
+                                        "x1":  267,
+                                        "y0":  252,
+                                        "y1":  292,
+                                        "color":  "#0096c7"
+                                    },
+                                    {
+                                        "id":  4,
+                                        "name":  "Recreational\nActivities",
+                                        "x0":  245,
+                                        "x1":  267,
+                                        "y0":  306,
+                                        "y1":  340,
+                                        "color":  "#0096c7"
+                                    },
+                                    {
+                                        "id":  5,
+                                        "name":  "Revenue\n(AUD Billions)",
+                                        "x0":  540,
+                                        "x1":  562,
+                                        "y0":  70,
+                                        "y1":  220,
+                                        "color":  "#0096c7"
+                                    },
+                                    {
+                                        "id":  6,
+                                        "name":  "Jobs\nSupported",
+                                        "x0":  540,
+                                        "x1":  562,
+                                        "y0":  250,
+                                        "y1":  365,
+                                        "color":  "#0096c7"
+                                    }
+                                ]
+                 },
+                 {
+                     "name":  "links",
+                     "values":  [
+                                    {
+                                        "source":  "GBR Economy\n$9.0B",
+                                        "target":  "Tourism",
+                                        "value":  7.9,
+                                        "path":  "M42,210.0 C133.4,210.0 153.7,120.0 245,120.0",
+                                        "strokeWidth":  33.2
+                                    },
+                                    {
+                                        "source":  "GBR Economy\n$9.0B",
+                                        "target":  "Commercial Fishing\n\u0026 Aquaculture",
+                                        "value":  0.4,
+                                        "path":  "M42,210.0 C133.4,210.0 153.7,218.0 245,218.0",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "GBR Economy\n$9.0B",
+                                        "target":  "Scientific Research\n\u0026 Conservation",
+                                        "value":  0.4,
+                                        "path":  "M42,210.0 C133.4,210.0 153.7,272.0 245,272.0",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "GBR Economy\n$9.0B",
+                                        "target":  "Recreational\nActivities",
+                                        "value":  0.3,
+                                        "path":  "M42,210.0 C133.4,210.0 153.7,323.0 245,323.0",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "Tourism",
+                                        "target":  "Revenue\n(AUD Billions)",
+                                        "value":  7.9,
+                                        "path":  "M267,120.0 C389.9,120.0 417.1,145.0 540,145.0",
+                                        "strokeWidth":  33.2
+                                    },
+                                    {
+                                        "source":  "Tourism",
+                                        "target":  "Jobs\nSupported",
+                                        "value":  6.7,
+                                        "path":  "M267,120.0 C389.9,120.0 417.1,307.5 540,307.5",
+                                        "strokeWidth":  28.1
+                                    },
+                                    {
+                                        "source":  "Commercial Fishing\n\u0026 Aquaculture",
+                                        "target":  "Revenue\n(AUD Billions)",
+                                        "value":  0.4,
+                                        "path":  "M267,218.0 C389.9,218.0 417.1,145.0 540,145.0",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "Commercial Fishing\n\u0026 Aquaculture",
+                                        "target":  "Jobs\nSupported",
+                                        "value":  0.25,
+                                        "path":  "M267,218.0 C389.9,218.0 417.1,307.5 540,307.5",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "Scientific Research\n\u0026 Conservation",
+                                        "target":  "Revenue\n(AUD Billions)",
+                                        "value":  0.4,
+                                        "path":  "M267,272.0 C389.9,272.0 417.1,145.0 540,145.0",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "Scientific Research\n\u0026 Conservation",
+                                        "target":  "Jobs\nSupported",
+                                        "value":  0.35,
+                                        "path":  "M267,272.0 C389.9,272.0 417.1,307.5 540,307.5",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "Recreational\nActivities",
+                                        "target":  "Revenue\n(AUD Billions)",
+                                        "value":  0.3,
+                                        "path":  "M267,323.0 C389.9,323.0 417.1,145.0 540,145.0",
+                                        "strokeWidth":  7
+                                    },
+                                    {
+                                        "source":  "Recreational\nActivities",
+                                        "target":  "Jobs\nSupported",
+                                        "value":  0.4,
+                                        "path":  "M267,323.0 C389.9,323.0 417.1,307.5 540,307.5",
+                                        "strokeWidth":  7
+                                    }
+                                ]
+                 }
+             ],
+    "marks":  [
+                  {
+                      "type":  "path",
+                      "from":  {
+                                   "data":  "links"
+                               },
+                      "encode":  {
+                                     "enter":  {
+                                                   "path":  {
+                                                                "field":  "path"
+                                                            },
+                                                   "strokeWidth":  {
+                                                                       "field":  "strokeWidth"
+                                                                   },
+                                                   "stroke":  {
+                                                                  "value":  "#48cae4"
+                                                              },
+                                                   "strokeOpacity":  {
+                                                                         "value":  0.28
+                                                                     },
+                                                   "tooltip":  {
+                                                                   "signal":  "{\u0027Flow\u0027: datum.source + \u0027 -\u003e \u0027 + datum.target, \u0027Value\u0027: format(datum.value, \u0027$.1f\u0027) + \u0027B\u0027}"
+                                                               }
+                                               },
+                                     "hover":  {
+                                                   "strokeOpacity":  {
+                                                                         "value":  0.65
+                                                                     }
+                                               }
+                                 }
+                  },
+                  {
+                      "type":  "rect",
+                      "from":  {
+                                   "data":  "nodes"
+                               },
+                      "encode":  {
+                                     "enter":  {
+                                                   "x":  {
+                                                             "field":  "x0"
+                                                         },
+                                                   "x2":  {
+                                                              "field":  "x1"
+                                                          },
+                                                   "y":  {
+                                                             "field":  "y0"
+                                                         },
+                                                   "y2":  {
+                                                              "field":  "y1"
+                                                          },
+                                                   "fill":  {
+                                                                "value":  "#0096c7"
+                                                            },
+                                                   "cornerRadius":  {
+                                                                        "value":  3
+                                                                    },
+                                                   "tooltip":  {
+                                                                   "signal":  "{\u0027Sector\u0027: datum.name}"
+                                                               }
+                                               },
+                                     "hover":  {
+                                                   "fill":  {
+                                                                "value":  "#48cae4"
+                                                            }
+                                               }
+                                 }
+                  },
+                  {
+                      "type":  "text",
+                      "from":  {
+                                   "data":  "nodes"
+                               },
+                      "encode":  {
+                                     "enter":  {
+                                                   "x":  {
+                                                             "signal":  "datum.x0 \u003c 300 ? datum.x1 + 8 : datum.x0 - 8"
+                                                         },
+                                                   "y":  {
+                                                             "signal":  "(datum.y0 + datum.y1) / 2"
+                                                         },
+                                                   "align":  {
+                                                                 "signal":  "datum.x0 \u003c 300 ? \u0027left\u0027 : \u0027right\u0027"
+                                                             },
+                                                   "baseline":  {
+                                                                    "value":  "middle"
+                                                                },
+                                                   "text":  {
+                                                                "field":  "name"
+                                                            },
+                                                   "fill":  {
+                                                                "value":  "#c8dce8"
+                                                            },
+                                                   "fontSize":  {
+                                                                    "value":  12
+                                                                },
+                                                   "fontWeight":  {
+                                                                      "value":  500
+                                                                  }
+                                               }
+                                 }
+                  }
+              ]
+}

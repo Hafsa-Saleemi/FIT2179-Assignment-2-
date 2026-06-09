@@ -1,0 +1,340 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 420,
+  "background": "#0d2a3d",
+  "data": {
+    "url": "idiom5_stressors.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "mean_baa",
+        "mean_cots_per_tow"
+      ],
+      "as": [
+        "measure",
+        "value"
+      ]
+    },
+    {
+      "calculate": "datum.measure == 'mean_baa' ? 'Bleaching alert' : 'COTS per tow'",
+      "as": "Threat"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "value",
+          "as": "max_value"
+        }
+      ],
+      "groupby": [
+        "Threat"
+      ]
+    },
+    {
+      "calculate": "datum.value / datum.max_value",
+      "as": "normalised_value"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "point": {
+          "filled": true,
+          "size": 35
+        },
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "scale": {
+            "domain": [
+              1992,
+              2023
+            ],
+            "zero": false
+          },
+          "axis": {
+            "format": "d",
+            "tickCount": 8
+          }
+        },
+        "y": {
+          "field": "normalised_value",
+          "type": "quantitative",
+          "title": "Normalised value (0-1)",
+          "scale": {
+            "domain": [
+              0,
+              1
+            ]
+          },
+          "axis": {
+            "format": ".1f"
+          }
+        },
+        "color": {
+          "field": "Threat",
+          "type": "nominal",
+          "title": "Threat indicator",
+          "scale": {
+            "domain": [
+              "Bleaching alert",
+              "COTS per tow",
+              "Cyclone event"
+            ],
+            "range": [
+              "#90e0ef",
+              "#0096c7",
+              "#ffb347"
+            ]
+          },
+          "legend": {
+            "orient": "top-left",
+            "direction": "vertical",
+            "offset": 10,
+            "padding": 5,
+            "fillColor": "rgba(13,42,61,0.86)",
+            "strokeColor": "#2a6080",
+            "cornerRadius": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Threat",
+            "type": "nominal",
+            "title": "Indicator"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Original value",
+            "format": ".2f"
+          },
+          {
+            "field": "normalised_value",
+            "type": "quantitative",
+            "title": "Normalised",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.cyclone_event == 1"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "shape": "diamond",
+        "filled": true,
+        "size": 95,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              1992,
+              2023
+            ],
+            "zero": false
+          },
+          "axis": {
+            "format": "d",
+            "tickCount": 8
+          }
+        },
+        "y": {
+          "value": 24
+        },
+        "color": {
+          "datum": "Cyclone event",
+          "type": "nominal",
+          "title": "Threat indicator",
+          "scale": {
+            "domain": [
+              "Bleaching alert",
+              "COTS per tow",
+              "Cyclone event"
+            ],
+            "range": [
+              "#90e0ef",
+              "#0096c7",
+              "#ffb347"
+            ]
+          },
+          "legend": {
+            "orient": "top-left",
+            "direction": "vertical",
+            "offset": 10,
+            "padding": 5,
+            "fillColor": "rgba(13,42,61,0.86)",
+            "strokeColor": "#2a6080",
+            "cornerRadius": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Cyclone year",
+            "format": "d"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "id": "bleach_latest",
+            "x": 2021.55,
+            "y": 0.81
+          },
+          {
+            "id": "bleach_latest",
+            "x": 2022.15,
+            "y": 0.72
+          },
+          {
+            "id": "bleach_latest",
+            "x": 2023.0,
+            "y": 0.5784
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 1.5,
+        "color": "#ffb64f",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "detail": {
+          "field": "id"
+        },
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 2023.0,
+            "y": 0.5784
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "triangle-right",
+        "filled": true,
+        "size": 30,
+        "color": "#ff9e4f",
+        "stroke": "#0d2a3d",
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 2021.35,
+            "y": 0.84,
+            "label": "Bleaching remains one of the\nbiggest issues affecting the GBR"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -2,
+        "fontSize": 9,
+        "fontWeight": "normal",
+        "color": "#ffc14f",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axisX": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "axisY": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Inter"
+  }
+}

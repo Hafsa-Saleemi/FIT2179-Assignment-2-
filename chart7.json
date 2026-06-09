@@ -1,0 +1,137 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 620,
+  "height": 610,
+  "background": "#eaf7fb",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelColor": "#8a1010",
+      "titleColor": "#8a1010",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [
+      145.8,
+      -17.8
+    ],
+    "scale": 2065
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8d5b0",
+        "stroke": "#9fc7d4",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "idiom7_dhw_map.csv"
+      },
+      "mark": {
+        "type": "square",
+        "size": 1500,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "dhw",
+          "type": "quantitative",
+          "title": "Degree Heating Weeks",
+          "scale": {
+            "domain": [
+              0,
+              4,
+              8,
+              12,
+              20
+            ],
+            "range": [
+              "#fff3b0",
+              "#ffe066",
+              "#ffaa00",
+              "#e05c20",
+              "#8a1010"
+            ]
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "gradientLength": 220,
+            "gradientThickness": 16,
+            "title": "DHW (degC-weeks)"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "dhw",
+            "type": "quantitative",
+            "title": "DHW (°C-weeks)",
+            "format": ".1f"
+          },
+          {
+            "field": "sst",
+            "type": "quantitative",
+            "title": "SST (°C)",
+            "format": ".1f"
+          },
+          {
+            "field": "ssta",
+            "type": "quantitative",
+            "title": "SST Anomaly (°C)",
+            "format": ".2f"
+          },
+          {
+            "field": "lat",
+            "type": "quantitative",
+            "title": "Latitude",
+            "format": ".2f"
+          },
+          {
+            "field": "lon",
+            "type": "quantitative",
+            "title": "Longitude",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8d5b0",
+        "stroke": "#9fc7d4",
+        "strokeWidth": 0.5,
+        "opacity": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+sector,sector_name,lat,lon,mean_change,mean_before,mean_after,n_reefs,order
+CG,Cape Grenville,-12.675,143.842,-6.03,41.95,35.92,23,1
+PC,Princess Charlotte Bay,-14.192,144.917,-1.49,27.95,26.47,20,2
+CL,Cooktown-Lizard,-15.65,145.8,6.84,21.79,28.63,43,3
+CA,Cairns,-16.733,146.275,2.3,20.5,22.8,37,4
+IN,Innisfail,-17.95,146.8,-0.62,15.89,15.27,19,5
+TO,Townsville,-18.658,147.708,0.66,24.75,25.42,28,6
+CU,Cape Upstart,-19.217,148.9,11.42,17.14,28.56,15,7
+WH,Whitsunday,-19.808,150.15,-4.22,34.4,30.18,13,8
+PO,Pompey,-20.008,150.325,0.28,31.64,31.92,25,9
+SW,Swain,-21.942,152.655,-1.42,28.66,27.24,23,10
+CB,Capricorn-Bunker,-23.908,152.408,-0.1,51.6,51.49,11,11

@@ -1,0 +1,1050 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coral Bleaching � a degrading marine ecosystem</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ocean: #0096c7;
+      --ocean-dark: #1d3557;
+      --deep: #0d2a3d;
+      --coral: #0096c7;
+      --warning: #f77f00;
+      --text: #163042;
+      --soft: #577487;
+      --line: #d7e6ef;
+      --bg: #f5fbff;
+      --white: #ffffff;
+      --max-width: 1600px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 620px;
+      height: 76vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 64px;
+      color: white;
+      background:
+        linear-gradient(180deg, rgba(13,42,61,0.16), rgba(13,42,61,0.82)),
+        url("reef-header.jpg") center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.05));
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.92);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(54px, 7vw, 108px);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      font-weight: 800;
+      margin-bottom: 22px;
+      max-width: 980px;
+    }
+
+    .hero h1 span {
+      color: #8fe7ff;
+    }
+
+    .hero p {
+      max-width: 740px;
+      font-size: 19px;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 12px;
+    }
+
+    .byline {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    main {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 76px 80px 120px;
+    }
+
+    .intro {
+      max-width: 1120px;
+      margin-bottom: 82px;
+    }
+
+    .intro h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      margin-bottom: 24px;
+      letter-spacing: -0.04em;
+      color: var(--ocean-dark);
+    }
+
+    .intro p {
+      font-size: 18px;
+      color: var(--soft);
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      margin: 50px 0;
+    }
+
+    .act-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 30px 0 34px;
+      color: var(--ocean-dark);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    .act-label::before {
+      content: "";
+      width: 42px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--coral);
+    }
+
+    .story-section {
+      display: grid;
+      grid-template-columns: minmax(640px, 1.25fr) minmax(320px, 0.75fr);
+      gap: 50px;
+      align-items: start;
+      margin-bottom: 112px;
+    }
+
+    .story-section.reverse {
+      grid-template-columns: minmax(320px, 0.75fr) minmax(640px, 1.25fr);
+    }
+
+    .story-section.reverse .chart-panel {
+      order: 2;
+    }
+
+    .story-section.reverse .text-panel {
+      order: 1;
+    }
+
+    .story-section.full {
+      grid-template-columns: 1fr;
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chart-panel {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid #e3eef5;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .chart-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      color: var(--ocean-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .chart-subtitle {
+      font-size: 14px;
+      color: var(--soft);
+      margin-bottom: 22px;
+    }
+
+    .chart-box {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    #vis-1,
+    #vis-1 .vega-embed,
+    #vis-1 svg {
+      width: 100%;
+    }
+
+    #vis-1 svg {
+      height: auto;
+      display: block;
+    }
+
+    .caption {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--soft);
+    }
+
+    .source-line {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #577487;
+      font-weight: 600;
+    }
+
+    .chart-2-layout {
+      display: block;
+      width: 100%;
+    }
+
+    .chart-2-layout .chart-box {
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chart-2-section .text-panel p {
+      max-width: none;
+    }
+
+    #vis-2 {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #vis-2 .vega-embed,
+    #vis-2 svg {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    #vis-2 svg {
+      height: auto !important;
+      display: block;
+    }
+
+    #vis-3,
+    #vis-3 .vega-embed,
+    #vis-3 svg {
+      width: 100%;
+    }
+
+    #vis-3 svg {
+      height: auto;
+      display: block;
+    }
+
+    #vis-4,
+    #vis-4 .vega-embed,
+    #vis-4 svg {
+      width: 100%;
+    }
+
+    #vis-4 svg {
+      height: auto;
+      display: block;
+    }
+
+    #vis-5,
+    #vis-5 .vega-embed,
+    #vis-5 svg {
+      width: 100%;
+    }
+
+    #vis-5 svg {
+      height: auto;
+      display: block;
+    }
+
+    #vis-6,
+    #vis-6 .vega-embed,
+    #vis-6 svg {
+      width: 100%;
+    }
+
+    #vis-6 svg {
+      height: auto;
+      display: block;
+    }
+
+    #vis-7,
+    #vis-7 .vega-embed,
+    #vis-7 svg {
+      width: 100%;
+    }
+
+    #vis-7 svg {
+      height: auto;
+      display: block;
+    }
+
+    #vis-8,
+    #vis-8 .vega-embed,
+    #vis-8 svg {
+      width: 100%;
+    }
+
+    #vis-8 svg {
+      height: auto;
+      display: block;
+    }
+
+    .chart-9-section .chart-box {
+      overflow: hidden;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    #vis-9,
+    #vis-9 .vega-embed,
+    #vis-9 svg {
+      width: 100%;
+    }
+
+    #vis-9 svg {
+      height: auto;
+      display: block;
+    }
+
+    #vis-10,
+    #vis-10 .vega-embed,
+    #vis-10 svg,
+    #vis-11,
+    #vis-11 .vega-embed,
+    #vis-11 svg,
+    #vis-12,
+    #vis-12 .vega-embed,
+    #vis-12 svg,
+    #vis-13,
+    #vis-13 .vega-embed,
+    #vis-13 svg {
+      width: 100%;
+    }
+
+    #vis-10 svg,
+    #vis-11 svg,
+    #vis-12 svg,
+    #vis-13 svg {
+      height: auto;
+      display: block;
+    }
+
+    .story-section.chart-1-section {
+      grid-template-columns: minmax(780px, 1.45fr) minmax(320px, 0.55fr);
+    }
+
+    .story-section.chart-2-section {
+      grid-template-columns: minmax(470px, 1.05fr) minmax(370px, 0.95fr);
+      gap: 48px;
+      justify-content: stretch;
+    }
+
+    .story-section.chart-7-section {
+      width: 100%;
+      max-width: none;
+      grid-template-columns: minmax(720px, 1.05fr) minmax(500px, 0.95fr);
+      gap: 56px;
+      justify-content: stretch;
+    }
+
+    .chart-7-section .chart-box {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .chart-7-section .text-panel {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    .chart-7-section .text-panel p {
+      width: 100%;
+      max-width: none;
+    }
+
+    .chart-7-section .chart-7-note {
+      font-size: 13px;
+      line-height: 1.55;
+      margin-top: -4px;
+    }
+
+    .story-section.chart-9-section {
+      grid-template-columns: minmax(900px, 1.35fr) minmax(360px, 0.65fr);
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .story-section.chart-10-section {
+      width: 100%;
+      max-width: none;
+      grid-template-columns: minmax(480px, 0.85fr) minmax(760px, 1.15fr);
+      gap: 56px;
+      justify-content: stretch;
+    }
+
+    .chart-10-section .chart-panel {
+      width: 100%;
+      max-width: 940px;
+      justify-self: start;
+    }
+
+    .chart-10-section .chart-box {
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .chart-10-section .text-panel {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    .chart-10-section .text-panel p {
+      width: 100%;
+      max-width: none;
+    }
+
+    .story-section.chart-11-section {
+      grid-template-columns: minmax(900px, 1.35fr) minmax(360px, 0.65fr);
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chart-11-section .chart-box {
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .story-section.chart-12-section {
+      grid-template-columns: minmax(360px, 0.65fr) minmax(900px, 1.35fr);
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .story-section.chart-13-section {
+      width: 100%;
+      max-width: none;
+      grid-template-columns: minmax(820px, 1.32fr) minmax(360px, 0.68fr);
+      gap: 56px;
+      justify-content: stretch;
+    }
+
+    .chart-13-section .text-panel {
+      position: static;
+      width: 100%;
+      max-width: none;
+      padding-top: 8px;
+    }
+
+    .chart-13-section .text-panel p {
+      width: 100%;
+      max-width: none;
+    }
+
+    .chart-13-section .chart-panel {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    .chart-12-section .chart-box {
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .chart-9-section .chart-panel {
+      order: 1;
+    }
+
+    .chart-9-section .text-panel {
+      order: 2;
+      position: static;
+      padding-top: 8px;
+    }
+
+    .chart-2-caption {
+      max-width: 430px;
+    }
+
+    .chart-2-subtitle {
+      max-width: 430px;
+    }
+
+    .paired-section {
+      display: grid;
+      grid-template-columns: minmax(420px, 0.85fr) minmax(560px, 1.15fr);
+      gap: 42px;
+      align-items: start;
+      margin-bottom: 112px;
+    }
+
+    .paired-item {
+      display: grid;
+      gap: 26px;
+      align-content: start;
+    }
+
+    .paired-item .text-panel {
+      position: static;
+      padding-top: 0;
+    }
+
+    .text-panel {
+      position: sticky;
+      top: 28px;
+      padding-top: 4px;
+    }
+
+    .text-panel .number {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--coral);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .text-panel h3 {
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -0.04em;
+      color: var(--ocean-dark);
+    }
+
+    .text-panel p {
+      max-width: 560px;
+      margin-bottom: 18px;
+      font-size: 17px;
+      color: var(--soft);
+    }
+
+    .text-panel strong {
+      color: var(--text);
+    }
+
+    .highlight {
+      color: var(--coral);
+      font-weight: 800;
+    }
+
+    .pullquote {
+      margin: 76px auto 110px;
+      max-width: 980px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.22;
+      font-weight: 800;
+      color: var(--ocean);
+      text-align: center;
+      letter-spacing: -0.035em;
+    }
+
+    .closing {
+      max-width: 1120px;
+      margin: 30px 0 60px;
+      text-align: left;
+    }
+
+    .closing h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      margin-bottom: 24px;
+      letter-spacing: -0.04em;
+      color: var(--ocean-dark);
+    }
+
+    .closing p {
+      font-size: 18px;
+      color: var(--soft);
+      margin-bottom: 20px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 80px;
+      padding-top: 40px;
+      font-size: 14px;
+      color: var(--soft);
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    footer a {
+      color: var(--ocean);
+      text-decoration: none;
+    }
+
+    @media (max-width: 1050px) {
+      .story-section,
+      .story-section.reverse,
+      .paired-section {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .story-section.reverse .chart-panel,
+      .story-section.reverse .text-panel {
+        order: initial;
+      }
+
+      .text-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        min-height: 540px;
+        height: 68vh;
+        padding: 34px 26px;
+      }
+
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      main {
+        padding: 50px 22px 90px;
+      }
+
+      .chart-panel {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .story-section {
+        margin-bottom: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Coral Bleaching<br><span>a degrading marine ecosystem</span></h1>
+      <p>The Great Barrier Reef has survived cycles of damage and recovery. The danger now is that heat stress, bleaching and other disturbances are arriving faster than the reef can rebuild.</p>
+      <div class="byline">By Hafsa Saleemi</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Coral reefs are among the most diverse and valuable ecosystems on Earth, supporting marine biodiversity, coastal protection, tourism, and local livelihoods. The Great Barrier Reef (GBR), the world's largest coral reef system, has experienced repeated disturbances over recent decades, including marine heatwaves, mass bleaching events, cyclones, flooding, and crown-of-thorns starfish outbreaks.</p>
+      <p>This visualisation explores how these pressures have affected the GBR over time. Using data from scientific monitoring programs, it examines the distribution of reefs, the importance of the ecosystem, the increasing intensity of thermal stress, and the resulting changes in coral cover. Together, these visualisations tell the story of a reef under growing pressure and the challenges it faces in recovering from increasingly frequent disturbances.</p>
+      <div class="divider"></div>
+    </section>
+
+    <div class="act-label">Why reefs matter</div>
+
+    <section class="story-section chart-1-section">
+      <div class="chart-panel">
+        <div class="chart-title">Global coral reefs under threat</div>
+        <div class="chart-subtitle">Countries shaded by the percentage of reef area facing high local and thermal stress.</div>
+        <div class="chart-box"><div id="vis-1"></div></div>
+        <div class="caption"><span class="source-line">From: World Resources Institute, Reefs at Risk (2011)</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">01</div>
+        <h3>Global Reef Threats: Reef Decline is <span class="highlight">not isolated</span></h3>
+        <p>Coral reefs are an important part of the marine ecosystem. They support marine biodiversity, coastal protection, and local economies around the world. However due to climate change, rising ocean temperatures, pollution, and overfishing amongst other things have placed many reefs under threat. This map highlights the global distribution of major coral reefs and the proportion of them considered at risk. While reef decline is a worldwide challenge, we will be zooming into the Great Barrier Reef as it is one of the most important ecosystems in Australia.</p>
+      </div>
+    </section>
+
+    <section class="story-section chart-2-section">
+      <div class="text-panel">
+        <div class="number">02</div>
+        <h3>Inside Australia: The <span class="highlight">Great Barrier Reef</span></h3>
+        <p>Stretching over 2,300 kilometres along Australia's north-east coast, the Great Barrier Reef is the largest coral reef system in the world. It consists of thousands of individual reefs distributed across northern, central, and southern regions of Queensland. Conditions vary considerably between locations, which means reef health can differ from one area to another. Understanding this geographic diversity is important when assessing how different parts of the reef respond to environmental stress. This graph shows the current coral cover of each reef, and shows us which regions are most impacted by global warming and so on.</p>
+      </div>
+      <div class="chart-panel">
+        <div class="chart-title">The Great Barrier Reef by reef site</div>
+        <div class="chart-subtitle chart-2-subtitle">Colour represents reef health, from lower coral cover to healthier coral cover across monitored reef sites.</div>
+        <div class="chart-2-layout">
+          <div class="chart-box" style="min-height: 440px;"><div id="vis-2"></div></div>
+        </div>
+        <div class="caption chart-2-caption">The reef is not one single place. It is a long, uneven system stretching along Queensland's coast. <span class="source-line">From: AIMS LTMP manta tow surveys</span></div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="chart-panel">
+        <div class="chart-title">Economic value of the Great Barrier Reef</div>
+        <div class="chart-subtitle">Annual contribution to Australia's economy and jobs supported.</div>
+        <div class="chart-box"><div id="vis-3"></div></div>
+        <div class="caption">The reef contributes billions to the Australian economy and supports thousands of jobs. <span class="source-line">From: Deloitte Access Economics (2017)</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">03</div>
+        <h3>Economic Importance: A Reef that <span class="highlight">supports the country</span> and its people</h3>
+        <p>The Great Barrier Reef is not only an ecological treasure but also a major economic hub. Tourism generates most of its economic value, supporting many businesses and employment across Queensland. Fisheries and recreational activities also contribute to local communities. These benefits mean that reef decline has consequences that extend beyond the environment. Even if one does not care about the environment this issue will directly affect them. The economic impact will be felt not just in areas confined to the reef but at a wider scale.</p>
+      </div>
+    </section>
+
+    <section class="story-section reverse">
+        <div class="chart-panel">
+          <div class="chart-title">Biodiversity of the Great Barrier Reef</div>
+        <div class="chart-subtitle">Number of species by taxonomic group. Bubble size = species count.</div>
+        <div class="chart-box"><div id="vis-4"></div></div>
+        <div class="caption">The Great Barrier Reef supports a huge variety of life across many taxonomic groups. <span class="source-line">From: GBRMPA biodiversity overview; AIMS</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">04</div>
+        <h3>Biodiversity: A living System, <span class="highlight">not just coral</span></h3>
+        <p>Despite its name coral reefs do not only consist of coral. It supports an extremely diverse marine ecosystem. The reef supports an extraordinary variety of life, including corals, fish, turtles, sharks, molluscs, and marine mammals. This biodiversity underpins the ecological functioning of the entire ecosystem. Many species depend directly on healthy coral habitats for food, shelter, and reproduction. Protecting coral reefs therefore means protecting thousands of interconnected species that rely on them.</p>
+      </div>
+    </section>
+
+    <div class="pullquote">The story changes when the reef moves from disturbance and recovery to disturbance without enough time to recover.</div>
+
+    <div class="act-label">What is causing decline?</div>
+
+    <section class="story-section">
+      <div class="chart-panel">
+        <div class="chart-title">Threats to the reef over time</div>
+        <div class="chart-subtitle">Normalised bleaching alert and COTS density over time, with cyclone event years marked.</div>
+        <div class="chart-box"><div id="vis-5"></div></div>
+        <div class="caption">Many different stressors affect the reef, but bleaching has become a dominant factor in the recent years <span class="source-line">From: AIMS LTMP manta tow surveys; NOAA Coral Reef Watch v3.1; AIMS (2025)</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">05</div>
+        <h3>Multiple Threats: Many Pressures <span class="highlight">Act at Once</span></h3>
+        <p>Coral reefs face a range of pressures including mass bleaching, crown-of-thorns starfish outbreaks, cyclones, flooding, and disease. While each threat contributes to reef decline, recent monitoring shows that large-scale bleaching events have become the most significant driver of coral mortality. As such we will explore the events that have caused this increase in coral bleaching.</p>
+      </div>
+    </section>
+
+    <section class="story-section reverse">
+      <div class="chart-panel">
+        <div class="chart-title">Rising temperatures and bleaching stress</div>
+        <div class="chart-subtitle">Bleaching alert bars and SST anomaly line across GBR regions.</div>
+        <div class="chart-box"><div id="vis-6"></div></div>
+        <div class="caption">Rising sea-surface temperatures are closely tied to stronger bleaching stress across the GBR. <span class="source-line">From: NOAA Coral Reef Watch v3.1 (1993-2024)</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">06</div>
+        <h3>Heat Stress and <span class="highlight">Bleaching</span></h3>
+        <p>Coral bleaching occurs when prolonged heat stress disrupts the relationship between corals and the algae that provide them with energy. As ocean temperatures rise, bleaching events become much more frequent and much more severe. This chart demonstrates the strong relationship between increasing heat stress and the occurrence of mass bleaching events across the Great Barrier Reef. As the temperature fluctuates it can be seen that the bleaching events follow closely behind.</p>
+        <p style="font-size: 13px;">The Mean Bleaching Alert is a 0-4 scale measuring how severely heat stress threatens coral, where 4 = mass mortality expected. SST Anomaly is how many degrees warmer the ocean is compared to its historical average for that time of year.</p>
+      </div>
+    </section>
+
+    <section class="story-section chart-7-section">
+      <div class="chart-panel">
+        <div class="chart-title">Heat stress during the 2024 event</div>
+        <div class="chart-subtitle">Degree Heating Weeks (DHW) at peak of 2024 mass bleaching event. Bleaching threshold: 4 DHW. Mortality threshold: 8 DHW.</div>
+        <div class="chart-box"><div id="vis-7"></div></div>
+        <div class="caption">Large parts of the reef were pushed beyond bleaching and even mortality thresholds during the 2024 event. <span class="source-line">From: NOAA CoralTemp v3.1, 2024-03-15</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">07</div>
+        <h3>Spatial <span class="highlight">Heat Stress</span></h3>
+        <p>Heat stress is not distributed evenly across the reef. Some regions experience much higher levels of thermal stress than others. The map highlights where marine heatwaves were most intense during the most recent bleaching event. These patterns help explain why some areas have experienced more severe coral mortality than others.</p>
+        <p class="chart-7-note">DHW means Degree Heating Weeks, the larger the number the longer that area has been around that temperature.</p>
+      </div>
+    </section>
+
+    <div class="act-label">Evidence of collapse</div>
+
+    <section class="story-section reverse">
+      <div class="chart-panel">
+        <div class="chart-title">Hard coral cover across the GBR</div>
+        <div class="chart-subtitle">Mean hard coral cover (%) by region from AIMS LTMP manta tow surveys. Shaded bands = mass bleaching events.</div>
+        <div class="chart-box"><div id="vis-8"></div></div>
+        <div class="caption">Coral cover has fluctuated over time, but repeated bleaching events have made recovery increasingly fragile. <span class="source-line">From: AIMS LTMP manta tow surveys</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">08</div>
+        <h3>Long-Term Coral Cover Trends: The reef has changed <span class="highlight">over decades</span></h3>
+        <p>Coral cover is often used as an indicator of reef health, hard coral means dead coral. Over the past several decades, coral cover has fluctuated through cycles of disturbances from bleaching events, cyclones and outbreaks of crown-of-thorns starfish, and recoveries. Although periods of recovery have occurred, recently there has been an unfortunate increase in poor reef health. As the graphs show, the amount of hard coral has only increased.</p>
+      </div>
+    </section>
+
+    <section class="story-section chart-9-section">
+      <div class="text-panel">
+        <div class="number">09</div>
+        <h3>Every reef has its own <span class="highlight">health history</span></h3>
+        <p>Conditions vary considerably between individual reefs. While some reefs have maintained relatively high coral cover, others have experienced substantial losses. This visualisation reveals the diversity of reef trajectories across the Great Barrier Reef and highlights how environmental disturbances affect locations differently. And how widespread the effect actually is.</p>
+      </div>
+      <div class="chart-panel">
+        <div class="chart-title">Reef Health Strip</div>
+        <div class="chart-subtitle">Each row = one GBR sector sorted north (top) to south (bottom). Each column = survey year. Colour = mean live coral cover (%).</div>
+        <div class="chart-box"><div id="vis-9"></div></div>
+        <div class="caption"><span class="source-line">From: AIMS LTMP manta tow surveys</span></div>
+      </div>
+    </section>
+
+    <section class="story-section chart-10-section">
+      <div class="text-panel">
+        <div class="number">10</div>
+        <h3>Coral loss is <span class="highlight">uneven</span></h3>
+        <p>Coral decline is not evenly distributed across the Great Barrier Reef. This chart compares mean coral cover before and after the most recent survey period for each of the eleven GBR sectors, ordered from north to south. Some sectors experienced notable declines while others showed signs of recovery, revealing the geographic unevenness of bleaching impacts across the reef system.</p>
+      </div>
+      <div class="chart-panel">
+        <div class="chart-title">Coral cover change across the GBR</div>
+        <div class="chart-subtitle">Mean live coral cover (%) before and after most recent survey period.</div>
+        <div class="chart-box"><div id="vis-10"></div></div>
+        <div class="caption">The mean coral cover for the most part is stagnant or on decline between survey periods <span class="source-line">From: AIMS LTMP manta tow surveys</span></div>
+      </div>
+    </section>
+
+    <div class="act-label">Can the reef recover?</div>
+
+    <section class="story-section chart-11-section">
+        <div class="chart-panel">
+          <div class="chart-title">The GBR is Running Out of Time to Recover</div>
+          <div class="chart-subtitle chart-11-description">Coral cover before and after each bleaching event. Numbers = years until recovery.</div>
+        <div class="chart-box"><div id="vis-11"></div></div>
+        <div class="caption">Recovery is possible, but it takes years. Recent bleaching events are making that harder. <span class="source-line">From: AIMS LTMP manta tow surveys; AIMS (2025)</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">11</div>
+        <h3>Recovery <span class="highlight">Takes Time</span></h3>
+        <p>Coral reefs can recover following major disturbances, but recovery is often slow. Depending on the severity of damage, reefs may require many years before coral cover returns to previous levels. This chart compares coral cover immediately after bleaching events with levels achieved following recovery, highlighting the time required for ecosystems to rebuild themselves.</p>
+      </div>
+    </section>
+
+    <section class="story-section reverse chart-12-section">
+      <div class="chart-panel">
+        <div class="chart-title">Recovery Windows Are Shrinking</div>
+        <div class="chart-subtitle">Years between successive mass bleaching events on the GBR. The reef can recover - but it is running out of time.</div>
+        <div class="chart-box"><div id="vis-12"></div></div>
+        <div class="caption">The reef once had longer gaps between mass bleaching events. Recent gaps are much shorter. <span class="source-line">From: AIMS LTMP Annual Report 2024/2025</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">12</div>
+        <h3>Recovery Windows Are <span class="highlight">Shrinking</span></h3>
+        <p>Historically, reefs often had long periods between major disturbances. These intervals allowed coral reefs to recover before the next major event occurred. In recent decades, bleaching events have become more frequent, reducing the available time for recovery. As recovery windows shrink, the resilience of the reef becomes increasingly weaker until one day they will collapse.</p>
+      </div>
+    </section>
+
+    <section class="story-section chart-13-section">
+      <div class="chart-panel">
+        <div class="chart-title">Disturbances Are Increasing - The GBR Has No Time Left to Recover</div>
+        <div class="chart-subtitle">Major bleaching events, cyclones and COTS outbreaks on the GBR (1993-2024). Dot size = severity.</div>
+        <div class="chart-box"><div id="vis-13"></div></div>
+        <div class="caption">The reef can recover, but recovery becomes harder when damaging events arrive more often. <span class="source-line">From: AIMS LTMP Annual Report 2025; AIMS bleaching events page</span></div>
+      </div>
+      <div class="text-panel">
+        <div class="number">13</div>
+        <h3>Disturbances are becoming <span class="highlight">more frequent</span></h3>
+        <p>Major disturbances are occurring more frequently and often overlap with one another. Bleaching events, cyclones, and crown-of-thorns starfish outbreaks continue to place pressure on reef ecosystems. The increasing frequency of these disturbances helps explain why recovery has become more difficult and why the future resilience of the Great Barrier Reef remains uncertain.</p>
+      </div>
+    </section>
+
+    
+    <div class="divider"></div>
+
+    <section class="closing">
+      <p>The Great Barrier Reef remains is an important ecosystem, but the visualisations reveals a clear pattern of increasing pressure. While reefs have historically demonstrated an ability to recover from disturbance, repeated bleaching events, rising ocean temperatures, and other environmental stressors are reducing the time available for recovery.</p>
+      <p>The data show that coral decline is not driven by a single event but by the cumulative impact of multiple disturbances occurring with increasing frequency. Although substantial coral cover remains across many parts of the reef, future resilience will depend on whether recovery can keep pace with the growing intensity and frequency of these pressures. Understanding these patterns is essential for protecting one of the Australia's most important marine ecosystems.</p>
+    </section>
+
+    <footer>
+      <p><strong>Author:</strong> Hafsa Saleemi - FIT2179 Data Visualisation 2</p>
+      <p><strong>Tools:</strong> Vega, Vega-Lite, HTML, CSS, JavaScript</p>
+      <div style="margin-top: 28px;">
+        <p style="font-weight: 700; color: var(--text); margin-bottom: 12px;">References</p>
+        <p>Australian Institute of Marine Science. (2025). <em>Long-term monitoring program annual summary report of coral reef condition 2024/2025</em>. https://doi.org/10.25845/CS9T-0K11</p>
+        <p>Australian Institute of Marine Science. (n.d.). <em>Long-term monitoring program manta tow coral cover data</em>. Australian Institute of Marine Science. https://doi.org/10.25845/5c09b0abf315a</p>
+        <p>National Oceanic and Atmospheric Administration. (n.d.). <em>Coral Reef Watch virtual station time series: Great Barrier Reef</em>. NOAA Coral Reef Watch. https://coralreefwatch.noaa.gov/product/vs/timeseries/great_barrier_reef.php</p>
+        <p>National Oceanic and Atmospheric Administration. (n.d.). <em>NOAA CoralTemp Degree Heating Weeks (DHW) dataset</em>. NOAA CoastWatch. https://coastwatch.pfeg.noaa.gov/erddap/griddap/NOAA_DHW.html</p>
+        <p>Natural Earth. (n.d.). <em>1:10m physical vectors</em>. https://www.naturalearthdata.com/downloads/10m-physical-vectors/</p>
+        <p>Burke, L., Reytar, K., Spalding, M., &amp; Perry, A. (2011). <em>Reefs at risk revisited</em>. World Resources Institute. https://www.wri.org/research/reefs-risk-revisited</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const embedOptions = {
+      actions: false,
+      renderer: "svg"
+    };
+
+    const charts = [
+      ["#vis-1", "chart1.json"],
+      ["#vis-2", "chart2.json"],
+      ["#vis-3", "chart3.json"],
+      ["#vis-4", "chart4.json"],
+      ["#vis-5", "chart5.json"],
+      ["#vis-6", "chart6.json"],
+      ["#vis-7", "chart7.json"],
+      ["#vis-8", "chart8.json"],
+      ["#vis-9", "chart9.json"],
+      ["#vis-10", "chart10.json"],
+      ["#vis-11", "chart11.json"],
+      ["#vis-12", "chart12.json"],
+      ["#vis-13", "chart13.json"]
+    ];
+
+    async function resolvePack(spec) {
+      if (typeof d3 === "undefined" || !d3.pack || !Array.isArray(spec.data)) return;
+
+      for (const ds of spec.data) {
+        if (!Array.isArray(ds.transform)) continue;
+        const pk = ds.transform.find(t => t.type === "pack");
+        if (!pk) continue;
+
+        let rows = ds.values;
+        if (!rows && ds.url) {
+          const res = await fetch(ds.url);
+          rows = d3.csvParse(await res.text());
+        }
+        if (!rows) continue;
+
+        const field = pk.field;
+        const size = pk.size || [spec.width || 700, spec.height || 560];
+        const padding = pk.padding ?? 2;
+        rows.forEach(r => { r[field] = +r[field]; });
+
+        const root = d3.hierarchy({ children: rows })
+          .sum(d => d[field] || 0)
+          .sort((a, b) => b.value - a.value);
+
+        d3.pack().size(size).padding(padding)(root);
+
+        ds.values = root.leaves().map(l => Object.assign({}, l.data, {
+          x: l.x,
+          y: l.y,
+          r: l.r
+        }));
+        delete ds.url;
+        delete ds.format;
+        delete ds.transform;
+      }
+    }
+
+    charts.forEach(async ([selector, specUrl]) => {
+      try {
+        const response = await fetch(specUrl);
+        const spec = await response.json();
+        await resolvePack(spec);
+        await vegaEmbed(selector, spec, embedOptions);
+      } catch (error) {
+        console.error(`Error loading ${specUrl}:`, error);
+        document.querySelector(selector).innerHTML = `
+          <div style="padding:24px;color:#8a1010;background:#fff4f4;border:1px solid #ffd2d2;border-radius:12px;">
+            Could not load ${specUrl}. Check that this file and its CSV data files are in the same folder as index.html.
+          </div>`;
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

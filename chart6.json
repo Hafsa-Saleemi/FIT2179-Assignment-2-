@@ -1,0 +1,98 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 560,
+  "height": 380,
+  "background": "#0d2a3d",
+  "data": { "url": "../idiom6_sst_bleaching.csv" },
+  "layer": [
+    {
+      "mark": { "type": "bar", "opacity": 0.65, "color": "#ffb347" },
+      "encoding": {
+        "x": {
+          "field": "year", "type": "quantitative", "title": "Year",
+          "scale": { "domain": [1992, 2024], "zero": false },
+          "axis": { "format": "d", "tickCount": 8 }
+        },
+        "y": {
+          "field": "mean_baa", "type": "quantitative",
+          "title": "Bleaching alert (0–4)",
+          "axis": { "titleColor": "#ffb347", "labelColor": "#ffb347", "titlePadding": 10, "titleLimit": 200, "gridColor": "#1a3a4a", "tickColor": "#2a6080", "domainColor": "#2a6080" },
+          "scale": { "domain": [0, 4] }
+        },
+        "tooltip": [
+          { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
+          { "field": "mean_baa", "type": "quantitative", "title": "Mean bleaching alert", "format": ".2f" },
+          { "field": "max_baa", "type": "quantitative", "title": "Max bleaching alert" }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line", "interpolate": "monotone",
+        "color": "#48cae4", "strokeWidth": 2.5,
+        "point": { "color": "#48cae4", "size": 36, "filled": true }
+      },
+      "encoding": {
+        "x": {
+          "field": "year", "type": "quantitative",
+          "scale": { "domain": [1992, 2024], "zero": false },
+          "axis": { "format": "d", "tickCount": 8 }
+        },
+        "y": {
+          "field": "mean_ssta", "type": "quantitative",
+          "title": "SST anomaly (°C)",
+          "axis": { "orient": "right", "titleColor": "#48cae4", "labelColor": "#48cae4", "titlePadding": 10, "gridColor": "#1a3a4a", "tickColor": "#2a6080", "domainColor": "#2a6080" },
+          "scale": { "domain": [-0.5, 2.0] }
+        },
+        "tooltip": [
+          { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
+          { "field": "mean_ssta", "type": "quantitative", "title": "Mean SST anomaly (°C)", "format": ".2f" }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "year": 1998, "baa": 0.4575, "label": "1998 bleaching" },
+          { "year": 2002, "baa": 0.5292, "label": "2002 bleaching" },
+          { "year": 2016, "baa": 0.765,  "label": "2016 bleaching" },
+          { "year": 2017, "baa": 0.8484, "label": "2017 bleaching" },
+          { "year": 2020, "baa": 0.7505, "label": "2020 bleaching" },
+          { "year": 2022, "baa": 1.0288, "label": "2022 bleaching" },
+          { "year": 2024, "baa": 1.0446, "label": "2024 bleaching" }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 0,
+        "dy": -6,
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "color": "#ffb347",
+        "angle": 270
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative", "scale": { "domain": [1992, 2024], "zero": false } },
+        "y": { "field": "baa", "type": "quantitative", "scale": { "domain": [0, 4] }, "title": null },
+        "text": { "field": "label", "type": "nominal" }
+      }
+    }
+  ],
+  "resolve": { "scale": { "y": "independent" } },
+  "config": {
+    "view": { "stroke": null },
+    "axisX": {
+      "labelColor": "#c8dce8", "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a", "tickColor": "#2a6080",
+      "domainColor": "#2a6080", "labelFontSize": 11, "titleFontSize": 12
+    },
+    "axisY": {
+      "labelColor": "#c8dce8", "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a", "tickColor": "#2a6080",
+      "domainColor": "#2a6080", "labelFontSize": 11, "titleFontSize": 12
+    },
+    "font": "Inter"
+  }
+}

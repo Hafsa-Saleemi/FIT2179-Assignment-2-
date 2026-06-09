@@ -1,0 +1,283 @@
+﻿{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 320,
+  "background": "#0d2a3d",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axisX": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "axisY": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  },
+  "data": {
+    "url": "../idiom11_recovery_dumbbell.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "opacity": 0.6,
+        "color": "#48cae4"
+      },
+      "encoding": {
+        "y": {
+          "field": "event",
+          "type": "nominal",
+          "sort": [
+            "1998 Bleaching",
+            "2002 Bleaching",
+            "2016–17 Bleaching",
+            "2022 Bleaching"
+          ],
+          "title": "Bleaching Event",
+          "axis": {
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "trough_coral",
+          "type": "quantitative",
+          "title": "Mean GBR-wide Hard coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              45
+            ]
+          }
+        },
+        "x2": {
+          "field": "pre_coral",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "event",
+          "type": "nominal",
+          "sort": [
+            "1998 Bleaching",
+            "2002 Bleaching",
+            "2016–17 Bleaching",
+            "2022 Bleaching"
+          ]
+        },
+        "x": {
+          "field": "pre_coral",
+          "type": "quantitative"
+        },
+        "color": {
+          "value": "#caf0f8"
+        },
+        "tooltip": [
+          {
+            "field": "event",
+            "type": "nominal",
+            "title": "Event"
+          },
+          {
+            "field": "pre_coral",
+            "type": "quantitative",
+            "title": "Hard coral cover before (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "event",
+          "type": "nominal",
+          "sort": [
+            "1998 Bleaching",
+            "2002 Bleaching",
+            "2016–17 Bleaching",
+            "2022 Bleaching"
+          ]
+        },
+        "x": {
+          "field": "trough_coral",
+          "type": "quantitative"
+        },
+        "color": {
+          "value": "#e05c20"
+        },
+        "tooltip": [
+          {
+            "field": "event",
+            "type": "nominal",
+            "title": "Event"
+          },
+          {
+            "field": "trough_coral",
+            "type": "quantitative",
+            "title": "Hard coral cover after (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -18,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#48cae4"
+      },
+      "encoding": {
+        "y": {
+          "field": "event",
+          "type": "nominal",
+          "sort": [
+            "1998 Bleaching",
+            "2002 Bleaching",
+            "2016–17 Bleaching",
+            "2022 Bleaching"
+          ]
+        },
+        "x": {
+          "aggregate": "average",
+          "field": "pre_coral",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "years_to_recover",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -18,
+        "fontSize": 10,
+        "opacity": 0.7,
+        "color": "#a0b8c8"
+      },
+      "encoding": {
+        "y": {
+          "field": "event",
+          "type": "nominal",
+          "sort": [
+            "1998 Bleaching",
+            "2002 Bleaching",
+            "2016–17 Bleaching",
+            "2022 Bleaching"
+          ]
+        },
+        "x": {
+          "aggregate": "average",
+          "field": "pre_coral",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "recovery_label",
+          "type": "nominal"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.recovered === 'No' ? 'years - still recovering' : 'years'",
+          "as": "recovery_label"
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Before bleaching event"
+          },
+          {
+            "label": "After bleaching event"
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 0,
+        "opacity": 0,
+        "fillOpacity": 0,
+        "strokeOpacity": 0
+      },
+      "encoding": {
+        "x": {
+          "value": 0
+        },
+        "y": {
+          "value": 0
+        },
+        "color": {
+          "field": "label",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Before bleaching event",
+              "After bleaching event"
+            ],
+            "range": [
+              "#caf0f8",
+              "#e05c20"
+            ]
+          },
+          "legend": {
+            "title": "",
+            "orient": "top-right",
+            "direction": "vertical",
+            "symbolType": "circle",
+            "symbolSize": 120,
+            "fillColor": "rgba(13, 42, 61, 0.86)",
+            "strokeColor": "#2a6080",
+            "cornerRadius": 6,
+            "padding": 8,
+            "symbolOpacity": 1,
+            "labelPadding": 8
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 440,
+  "height": 460,
+  "background": "#eaf7fb",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelColor": "#8a1010",
+      "titleColor": "#8a1010",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [
+      147.8,
+      -16.2
+    ],
+    "scale": 1500,
+    "translate": [
+      230,
+      235
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8d5b0",
+        "stroke": "#9fc7d4",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8d5b0",
+        "stroke": "#9fc7d4",
+        "strokeWidth": 0.4,
+        "opacity": 1
+      }
+    },
+    {
+      "data": {
+        "url": "idiom2_gbr_sectors.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#9fc7d4",
+        "strokeWidth": 0.8,
+        "strokeDash": [
+          4,
+          3
+        ],
+        "opacity": 0.5
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.sector",
+            "type": "nominal",
+            "title": "Sector"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "idiom2_gbr_reefs.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.85,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "value": 55
+        },
+        "tooltip": [
+          {
+            "field": "reef_name",
+            "type": "nominal",
+            "title": "Reef"
+          },
+          {
+            "field": "sector",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "latest_coral_pct",
+            "type": "quantitative",
+            "title": "Latest coral cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "last_survey",
+            "type": "ordinal",
+            "title": "Last surveyed"
+          }
+        ],
+        "color": {
+          "field": "latest_coral_pct",
+          "type": "quantitative",
+          "title": "Latest coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              15,
+              30,
+              50,
+              75
+            ],
+            "range": [
+              "#8a1010",
+              "#e05c20",
+              "#ffffff",
+              "#0096c7",
+              "#023e8a"
+            ]
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "gradientLength": 190,
+            "gradientThickness": 12,
+            "titleLimit": 260,
+            "values": [
+              0,
+              25,
+              50,
+              75
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

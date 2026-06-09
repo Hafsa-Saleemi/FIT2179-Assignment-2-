@@ -1,0 +1,213 @@
+﻿{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 420,
+  "height": 285,
+  "background": "#0d2a3d",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axisX": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "axisY": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  },
+  "data": {
+    "url": "../idiom10_slope.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "opacity": 0.9,
+        "color": "#48cae4"
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "ordinal",
+          "sort": [
+            "Before",
+            "After"
+          ],
+          "title": null,
+          "axis": {
+            "labelFontSize": 13,
+            "labelFontWeight": "bold"
+          }
+        },
+        "y": {
+          "field": "coral_cover",
+          "type": "quantitative",
+          "title": "Mean live coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              60
+            ]
+          }
+        },
+        "detail": {
+          "field": "sector_name",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "sector_name",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "period",
+            "type": "nominal",
+            "title": "Period"
+          },
+          {
+            "field": "coral_cover",
+            "type": "quantitative",
+            "title": "Mean live coral cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_change",
+            "type": "quantitative",
+            "title": "Change (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "n_reefs",
+            "type": "quantitative",
+            "title": "Reefs surveyed"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 80,
+        "opacity": 1,
+        "color": "#48cae4"
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "ordinal",
+          "sort": [
+            "Before",
+            "After"
+          ]
+        },
+        "y": {
+          "field": "coral_cover",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "sector_name",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "period",
+            "type": "nominal",
+            "title": "Period"
+          },
+          {
+            "field": "coral_cover",
+            "type": "quantitative",
+            "title": "Mean live coral cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_change",
+            "type": "quantitative",
+            "title": "Change (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "n_reefs",
+            "type": "quantitative",
+            "title": "Reefs surveyed"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.period === 'After'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10,
+        "color": "#c8dce8"
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "ordinal",
+          "sort": [
+            "Before",
+            "After"
+          ]
+        },
+        "y": {
+          "field": "coral_cover",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "sector_name",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "sector_name",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "period",
+            "type": "nominal",
+            "title": "Period"
+          },
+          {
+            "field": "coral_cover",
+            "type": "quantitative",
+            "title": "Mean live coral cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_change",
+            "type": "quantitative",
+            "title": "Change (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "n_reefs",
+            "type": "quantitative",
+            "title": "Reefs surveyed"
+          }
+        ]
+      }
+    }
+  ]
+}

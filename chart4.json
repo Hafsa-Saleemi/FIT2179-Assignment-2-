@@ -1,0 +1,155 @@
+﻿{
+    "$schema":  "https://vega.github.io/schema/vega/v5.json",
+    "width":  700,
+    "height":  560,
+    "background":  "#0d2a3d",
+    "padding":  {
+                    "left":  20,
+                    "right":  20,
+                    "top":  20,
+                    "bottom":  20
+                },
+    "data":  [
+                 {
+                     "name":  "table",
+                     "url":  "idiom4_gbr_biodiversity.csv",
+                     "format":  {
+                                    "type":  "csv"
+                                },
+                     "transform":  [
+                                       {
+                                           "type":  "pack",
+                                           "field":  "count",
+                                           "size":  [
+                                                        700,
+                                                        560
+                                                    ],
+                                           "padding":  2
+                                       }
+                                   ]
+                 }
+             ],
+    "marks":  [
+                  {
+                      "type":  "symbol",
+                      "from":  {
+                                   "data":  "table"
+                               },
+                      "encode":  {
+                                     "enter":  {
+                                                   "shape":  {
+                                                                 "value":  "circle"
+                                                             },
+                                                   "x":  {
+                                                             "field":  "x"
+                                                         },
+                                                   "y":  {
+                                                             "field":  "y"
+                                                         },
+                                                   "size":  {
+                                                                "signal":  "4 * datum.r * datum.r"
+                                                            },
+                                                   "fill":  {
+                                                                "value":  "#0096c7"
+                                                            },
+                                                   "fillOpacity":  {
+                                                                       "value":  0.85
+                                                                   },
+                                                   "stroke":  {
+                                                                  "value":  "#0d2a3d"
+                                                              },
+                                                   "strokeWidth":  {
+                                                                       "value":  1.5
+                                                                   },
+                                                   "tooltip":  {
+                                                                   "signal":  "{\u0027Group\u0027: datum.group, \u0027Species count\u0027: format(datum.count, \u0027,\u0027)}"
+                                                               }
+                                               },
+                                     "hover":  {
+                                                   "fillOpacity":  {
+                                                                       "value":  1
+                                                                   },
+                                                   "stroke":  {
+                                                                  "value":  "#ffffff"
+                                                              },
+                                                   "strokeWidth":  {
+                                                                       "value":  2
+                                                                   }
+                                               }
+                                 }
+                  },
+                  {
+                      "type":  "text",
+                      "from":  {
+                                   "data":  "table"
+                               },
+                      "encode":  {
+                                     "enter":  {
+                                                   "x":  {
+                                                             "field":  "x"
+                                                         },
+                                                   "y":  {
+                                                             "field":  "y",
+                                                             "offset":  -6
+                                                         },
+                                                   "align":  {
+                                                                 "value":  "center"
+                                                             },
+                                                   "baseline":  {
+                                                                    "value":  "middle"
+                                                                },
+                                                   "text":  {
+                                                                "field":  "group"
+                                                            },
+                                                   "fill":  {
+                                                                "value":  "#ffffff"
+                                                            },
+                                                   "fontSize":  {
+                                                                    "signal":  "max(9, min(14, datum.r / 3))"
+                                                                },
+                                                   "fontWeight":  {
+                                                                      "value":  600
+                                                                  },
+                                                   "limit":  {
+                                                                 "signal":  "datum.r * 1.55"
+                                                             }
+                                               }
+                                 }
+                  },
+                  {
+                      "type":  "text",
+                      "from":  {
+                                   "data":  "table"
+                               },
+                      "encode":  {
+                                     "enter":  {
+                                                   "x":  {
+                                                             "field":  "x"
+                                                         },
+                                                   "y":  {
+                                                             "field":  "y",
+                                                             "offset":  12
+                                                         },
+                                                   "align":  {
+                                                                 "value":  "center"
+                                                             },
+                                                   "baseline":  {
+                                                                    "value":  "middle"
+                                                                },
+                                                   "text":  {
+                                                                "signal":  "format(datum.count, \u0027,\u0027) + \u0027 spp.\u0027"
+                                                            },
+                                                   "fill":  {
+                                                                "value":  "#caf0f8"
+                                                            },
+                                                   "fontSize":  {
+                                                                    "signal":  "max(8, min(12, datum.r / 4))"
+                                                                },
+                                                   "fontWeight":  {
+                                                                      "value":  400
+                                                                  }
+                                               }
+                                 }
+                  }
+              ]
+}

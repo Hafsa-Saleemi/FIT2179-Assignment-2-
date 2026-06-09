@@ -1,0 +1,207 @@
+{
+    "$schema":  "https://vega.github.io/schema/vega-lite/v5.json",
+    "description":  "Global coral reef nations choropleth map with micro-area tiles for territories",
+    "width":  780,
+    "height":  430,
+    "background":  "#eaf7fb",
+    "projection":  {
+                       "type":  "equalEarth",
+                       "scale":  150,
+                       "translate":  [
+                                         360,
+                                         215
+                                     ]
+                   },
+    "layer":  [
+                  {
+                      "data":  {
+                                   "url":  "https://vega.github.io/vega-datasets/data/world-110m.json",
+                                   "format":  {
+                                                  "type":  "topojson",
+                                                  "feature":  "countries"
+                                              }
+                               },
+                      "mark":  {
+                                   "type":  "geoshape",
+                                   "fill":  "#e8d5b0",
+                                   "stroke":  "#9fc7d4",
+                                   "strokeWidth":  0.6
+                               }
+                  },
+                  {
+                      "data":  {
+                                   "url":  "https://vega.github.io/vega-datasets/data/world-110m.json",
+                                   "format":  {
+                                                  "type":  "topojson",
+                                                  "feature":  "countries"
+                                              }
+                               },
+                      "transform":  [
+                                        {
+                                            "lookup":  "id",
+                                            "from":  {
+                                                         "data":  {
+                                                                      "url":  "data/idiom1_reef_threat.csv",
+                                                                      "format":  {
+                                                                                     "type":  "csv",
+                                                                                     "parse":  {
+                                                                                                   "id":  "number",
+                                                                                                   "reef_area_sqkm":  "number",
+                                                                                                   "local_threatened_pct":  "number",
+                                                                                                   "local_plus_thermal_threatened_pct":  "number",
+                                                                                                   "reef_in_mpa_pct":  "number"
+                                                                                               }
+                                                                                 }
+                                                                  },
+                                                         "key":  "id",
+                                                         "fields":  [
+                                                                        "name",
+                                                                        "iso_a3",
+                                                                        "reef_area_sqkm",
+                                                                        "local_threatened_pct",
+                                                                        "local_plus_thermal_threatened_pct",
+                                                                        "reef_in_mpa_pct"
+                                                                    ]
+                                                     }
+                                        },
+                                        {
+                                            "filter":  "isValid(datum.local_threatened_pct)"
+                                        }
+                                    ],
+                      "mark":  {
+                                   "type":  "geoshape",
+                                   "stroke":  "#9fc7d4",
+                                   "strokeWidth":  0.8
+                               },
+                      "encoding":  {
+                                       "color":  {
+                                                     "field":  "local_threatened_pct",
+                                                     "type":  "quantitative",
+                                                     "title":  "% locally threatened",
+                                                     "scale":  {
+                                                                   "domain":  [
+                                                                                  0,
+                                                                                  100
+                                                                              ],
+                                                                   "range":  [
+                                                                                 "#ffb347",
+                                                                                 "#d62828"
+                                                                             ]
+                                                               },
+                                                     "legend":  {
+                                                                    "orient":  "top-right",
+                                                                    "offset":  8,
+                                                                    "padding":  8,
+                                                                    "gradientLength":  120,
+                                                                    "fillColor":  "rgba(255,255,255,0.92)",
+                                                                    "strokeColor":  "#9fc7d4",
+                                                                    "cornerRadius":  14,
+                                                                    "titleColor":  "#163042",
+                                                                    "labelColor":  "#577487",
+                                                                    "titleFont":  "Inter",
+                                                                    "labelFont":  "Inter",
+                                                                    "titleFontSize":  12,
+                                                                    "labelFontSize":  11,
+                                                                    "gradientThickness":  12
+                                                                }
+                                                 },
+                                       "tooltip":  [
+                                                       {
+                                                           "field":  "name",
+                                                           "type":  "nominal",
+                                                           "title":  "Country/territory"
+                                                       },
+                                                       {
+                                                           "field":  "reef_area_sqkm",
+                                                           "type":  "quantitative",
+                                                           "title":  "Reef area (km²)",
+                                                           "format":  ","
+                                                       },
+                                                       {
+                                                           "field":  "local_threatened_pct",
+                                                           "type":  "quantitative",
+                                                           "title":  "Locally threatened (%)"
+                                                       },
+                                                       {
+                                                           "field":  "local_plus_thermal_threatened_pct",
+                                                           "type":  "quantitative",
+                                                           "title":  "With thermal stress (%)"
+                                                       },
+                                                       {
+                                                           "field":  "reef_in_mpa_pct",
+                                                           "type":  "quantitative",
+                                                           "title":  "Protected reef (%)"
+                                                       }
+                                                   ]
+                                   }
+                  },
+                  {
+                      "data":  {
+                                   "url":  "data/idiom1_micro_areas.geojson",
+                                   "format":  {
+                                                  "type":  "geojson"
+                                              }
+                               },
+                      "mark":  {
+                                   "type":  "geoshape",
+                                   "stroke":  "#1d3557",
+                                   "strokeWidth":  0.9
+                               },
+                      "encoding":  {
+                                       "color":  {
+                                                     "field":  "local_threatened_pct",
+                                                     "type":  "quantitative",
+                                                     "scale":  {
+                                                                   "domain":  [
+                                                                                  0,
+                                                                                  100
+                                                                              ],
+                                                                   "range":  [
+                                                                                 "#ffb347",
+                                                                                 "#d62828"
+                                                                             ]
+                                                               },
+                                                     "legend":  null
+                                                 },
+                                       "tooltip":  [
+                                                       {
+                                                           "field":  "name",
+                                                           "type":  "nominal",
+                                                           "title":  "Country/territory"
+                                                       },
+                                                       {
+                                                           "field":  "reef_area_sqkm",
+                                                           "type":  "quantitative",
+                                                           "title":  "Reef area (km²)",
+                                                           "format":  ","
+                                                       },
+                                                       {
+                                                           "field":  "local_threatened_pct",
+                                                           "type":  "quantitative",
+                                                           "title":  "Locally threatened (%)"
+                                                       },
+                                                       {
+                                                           "field":  "local_plus_thermal_threatened_pct",
+                                                           "type":  "quantitative",
+                                                           "title":  "With thermal stress (%)"
+                                                       },
+                                                       {
+                                                           "field":  "reef_in_mpa_pct",
+                                                           "type":  "quantitative",
+                                                           "title":  "Protected reef (%)"
+                                                       }
+                                                   ]
+                                   }
+                  }
+              ],
+    "config":  {
+                   "view":  {
+                                "stroke":  null
+                            },
+                   "font":  "Inter",
+                   "legend":  {
+                                  "titleFont":  "Inter",
+                                  "labelFont":  "Inter"
+                              }
+               }
+}

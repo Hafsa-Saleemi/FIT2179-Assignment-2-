@@ -1,0 +1,297 @@
+sector,sector_name,year,mean_coral,n_reefs,order
+CG,Cape Grenville,1993,44.44,7,1
+CG,Cape Grenville,1994,37.7,6,1
+CG,Cape Grenville,1995,43.25,9,1
+CG,Cape Grenville,1996,42.65,7,1
+CG,Cape Grenville,1998,39.7,13,1
+CG,Cape Grenville,2002,44.1,5,1
+CG,Cape Grenville,2003,51.76,2,1
+CG,Cape Grenville,2004,43.02,6,1
+CG,Cape Grenville,2005,38.71,6,1
+CG,Cape Grenville,2006,25.45,5,1
+CG,Cape Grenville,2013,36.48,11,1
+CG,Cape Grenville,2017,31.69,11,1
+CG,Cape Grenville,2019,32.1,9,1
+CG,Cape Grenville,2020,29.38,14,1
+CG,Cape Grenville,2021,32.77,17,1
+CG,Cape Grenville,2022,45.4,12,1
+CG,Cape Grenville,2023,40.87,14,1
+PC,Princess Charlotte Bay,1993,25.39,7,2
+PC,Princess Charlotte Bay,1994,22.94,6,2
+PC,Princess Charlotte Bay,1995,19.77,6,2
+PC,Princess Charlotte Bay,1996,27.25,7,2
+PC,Princess Charlotte Bay,1998,28.4,6,2
+PC,Princess Charlotte Bay,1999,29.46,6,2
+PC,Princess Charlotte Bay,2000,28.66,6,2
+PC,Princess Charlotte Bay,2001,33.13,6,2
+PC,Princess Charlotte Bay,2002,30.04,6,2
+PC,Princess Charlotte Bay,2003,24.62,2,2
+PC,Princess Charlotte Bay,2004,24.69,3,2
+PC,Princess Charlotte Bay,2005,25.88,5,2
+PC,Princess Charlotte Bay,2006,13.72,6,2
+PC,Princess Charlotte Bay,2013,24.12,13,2
+PC,Princess Charlotte Bay,2015,35.03,5,2
+PC,Princess Charlotte Bay,2017,19.43,10,2
+PC,Princess Charlotte Bay,2019,21.35,9,2
+PC,Princess Charlotte Bay,2020,16.68,9,2
+PC,Princess Charlotte Bay,2021,28.48,11,2
+PC,Princess Charlotte Bay,2022,40.27,6,2
+PC,Princess Charlotte Bay,2023,33.44,10,2
+CL,Cooktown-Lizard,1993,24.81,14,3
+CL,Cooktown-Lizard,1994,29.98,17,3
+CL,Cooktown-Lizard,1995,22.37,19,3
+CL,Cooktown-Lizard,1996,24.59,21,3
+CL,Cooktown-Lizard,1997,22.68,12,3
+CL,Cooktown-Lizard,1998,16.76,20,3
+CL,Cooktown-Lizard,1999,25.5,20,3
+CL,Cooktown-Lizard,2000,25.93,21,3
+CL,Cooktown-Lizard,2001,21.76,21,3
+CL,Cooktown-Lizard,2002,21.12,18,3
+CL,Cooktown-Lizard,2003,23.96,16,3
+CL,Cooktown-Lizard,2004,16.03,20,3
+CL,Cooktown-Lizard,2005,23.94,19,3
+CL,Cooktown-Lizard,2006,20.92,18,3
+CL,Cooktown-Lizard,2007,20.29,20,3
+CL,Cooktown-Lizard,2008,19.43,8,3
+CL,Cooktown-Lizard,2009,23.79,28,3
+CL,Cooktown-Lizard,2010,23.53,23,3
+CL,Cooktown-Lizard,2011,24.69,16,3
+CL,Cooktown-Lizard,2013,22.39,22,3
+CL,Cooktown-Lizard,2015,12.33,22,3
+CL,Cooktown-Lizard,2017,6.14,11,3
+CL,Cooktown-Lizard,2019,7.82,8,3
+CL,Cooktown-Lizard,2020,14.04,3,3
+CL,Cooktown-Lizard,2021,23.63,26,3
+CL,Cooktown-Lizard,2022,29.74,8,3
+CL,Cooktown-Lizard,2023,34.01,18,3
+CA,Cairns,1993,19.04,15,4
+CA,Cairns,1994,15.9,14,4
+CA,Cairns,1995,21.78,18,4
+CA,Cairns,1996,18.07,18,4
+CA,Cairns,1997,22.05,14,4
+CA,Cairns,1998,21.96,20,4
+CA,Cairns,1999,18.3,18,4
+CA,Cairns,2000,22.69,16,4
+CA,Cairns,2001,21.27,13,4
+CA,Cairns,2002,14.37,17,4
+CA,Cairns,2003,18.17,16,4
+CA,Cairns,2004,15.71,19,4
+CA,Cairns,2005,16.2,16,4
+CA,Cairns,2006,15.57,14,4
+CA,Cairns,2007,17.43,31,4
+CA,Cairns,2008,17.43,9,4
+CA,Cairns,2009,19.4,10,4
+CA,Cairns,2010,24.41,13,4
+CA,Cairns,2011,21.54,5,4
+CA,Cairns,2012,13.18,7,4
+CA,Cairns,2013,15.73,11,4
+CA,Cairns,2014,13.74,4,4
+CA,Cairns,2015,15.34,11,4
+CA,Cairns,2016,18.82,6,4
+CA,Cairns,2017,19.54,12,4
+CA,Cairns,2018,9.95,5,4
+CA,Cairns,2019,10.79,14,4
+CA,Cairns,2020,14.51,14,4
+CA,Cairns,2021,25.06,17,4
+CA,Cairns,2022,30.83,8,4
+CA,Cairns,2023,28.52,10,4
+IN,Innisfail,1993,12.42,2,5
+IN,Innisfail,1994,18.93,7,5
+IN,Innisfail,1995,18.42,7,5
+IN,Innisfail,1996,24.49,6,5
+IN,Innisfail,1997,22.49,6,5
+IN,Innisfail,1998,20.69,7,5
+IN,Innisfail,1999,13.1,5,5
+IN,Innisfail,2000,10.26,12,5
+IN,Innisfail,2001,6.65,2,5
+IN,Innisfail,2002,12.68,10,5
+IN,Innisfail,2003,4.25,4,5
+IN,Innisfail,2004,10.38,2,5
+IN,Innisfail,2005,18.62,6,5
+IN,Innisfail,2006,8.43,10,5
+IN,Innisfail,2007,9.37,9,5
+IN,Innisfail,2008,7.89,7,5
+IN,Innisfail,2009,11.89,6,5
+IN,Innisfail,2010,12.56,6,5
+IN,Innisfail,2012,8.62,7,5
+IN,Innisfail,2013,5.25,2,5
+IN,Innisfail,2014,15.53,3,5
+IN,Innisfail,2015,20.41,5,5
+IN,Innisfail,2016,22.09,9,5
+IN,Innisfail,2017,23.45,6,5
+IN,Innisfail,2018,6.97,7,5
+IN,Innisfail,2019,9.77,3,5
+IN,Innisfail,2020,7.16,7,5
+IN,Innisfail,2021,13.17,4,5
+IN,Innisfail,2022,13.71,3,5
+IN,Innisfail,2023,19.11,5,5
+TO,Townsville,1993,14.76,6,6
+TO,Townsville,1994,23.59,6,6
+TO,Townsville,1995,23.85,8,6
+TO,Townsville,1996,24.4,10,6
+TO,Townsville,1997,25.03,10,6
+TO,Townsville,1998,27.41,10,6
+TO,Townsville,1999,22.16,10,6
+TO,Townsville,2000,14.9,10,6
+TO,Townsville,2001,16.83,10,6
+TO,Townsville,2002,18.54,27,6
+TO,Townsville,2003,14.0,25,6
+TO,Townsville,2004,14.96,8,6
+TO,Townsville,2005,18.3,8,6
+TO,Townsville,2006,10.48,11,6
+TO,Townsville,2007,13.14,11,6
+TO,Townsville,2008,11.79,13,6
+TO,Townsville,2009,12.85,5,6
+TO,Townsville,2010,15.76,10,6
+TO,Townsville,2011,7.3,7,6
+TO,Townsville,2012,5.15,9,6
+TO,Townsville,2013,11.52,7,6
+TO,Townsville,2014,13.27,10,6
+TO,Townsville,2015,19.38,8,6
+TO,Townsville,2016,24.35,12,6
+TO,Townsville,2017,22.8,7,6
+TO,Townsville,2018,21.13,11,6
+TO,Townsville,2019,20.77,5,6
+TO,Townsville,2020,23.67,12,6
+TO,Townsville,2021,30.54,10,6
+TO,Townsville,2022,37.59,8,6
+TO,Townsville,2023,37.95,12,6
+CU,Cape Upstart,1993,15.29,7,7
+CU,Cape Upstart,1994,11.49,5,7
+CU,Cape Upstart,1995,21.08,6,7
+CU,Cape Upstart,1996,17.78,7,7
+CU,Cape Upstart,1997,17.18,6,7
+CU,Cape Upstart,1998,19.46,6,7
+CU,Cape Upstart,1999,25.67,7,7
+CU,Cape Upstart,2000,21.28,6,7
+CU,Cape Upstart,2001,16.74,6,7
+CU,Cape Upstart,2002,20.89,7,7
+CU,Cape Upstart,2003,14.51,6,7
+CU,Cape Upstart,2004,12.33,3,7
+CU,Cape Upstart,2005,20.03,9,7
+CU,Cape Upstart,2007,13.04,7,7
+CU,Cape Upstart,2011,9.96,2,7
+CU,Cape Upstart,2015,13.63,4,7
+CU,Cape Upstart,2018,22.69,1,7
+CU,Cape Upstart,2021,28.83,12,7
+CU,Cape Upstart,2022,34.21,5,7
+CU,Cape Upstart,2023,32.07,1,7
+WH,Whitsunday,1993,32.91,9,8
+WH,Whitsunday,1994,24.55,7,8
+WH,Whitsunday,1995,23.07,11,8
+WH,Whitsunday,1996,26.98,12,8
+WH,Whitsunday,1997,18.93,12,8
+WH,Whitsunday,1998,21.23,9,8
+WH,Whitsunday,1999,19.67,9,8
+WH,Whitsunday,2000,24.69,10,8
+WH,Whitsunday,2001,23.46,10,8
+WH,Whitsunday,2002,28.42,8,8
+WH,Whitsunday,2003,21.9,10,8
+WH,Whitsunday,2004,25.22,11,8
+WH,Whitsunday,2005,25.86,7,8
+WH,Whitsunday,2006,18.31,2,8
+WH,Whitsunday,2007,30.04,5,8
+WH,Whitsunday,2008,22.33,1,8
+WH,Whitsunday,2009,16.59,5,8
+WH,Whitsunday,2010,17.96,3,8
+WH,Whitsunday,2011,10.56,5,8
+WH,Whitsunday,2013,12.01,9,8
+WH,Whitsunday,2015,16.35,6,8
+WH,Whitsunday,2017,26.85,10,8
+WH,Whitsunday,2019,23.38,4,8
+WH,Whitsunday,2021,28.59,10,8
+WH,Whitsunday,2022,37.19,9,8
+WH,Whitsunday,2023,30.7,10,8
+PO,Pompey,1993,52.06,2,9
+PO,Pompey,1994,44.88,6,9
+PO,Pompey,1995,43.79,4,9
+PO,Pompey,1996,39.67,4,9
+PO,Pompey,1997,46.16,2,9
+PO,Pompey,1998,43.24,6,9
+PO,Pompey,1999,31.17,6,9
+PO,Pompey,2000,36.34,6,9
+PO,Pompey,2001,24.23,12,9
+PO,Pompey,2002,34.26,6,9
+PO,Pompey,2003,37.9,6,9
+PO,Pompey,2004,41.56,6,9
+PO,Pompey,2005,31.04,6,9
+PO,Pompey,2006,35.23,13,9
+PO,Pompey,2007,32.47,5,9
+PO,Pompey,2008,41.12,8,9
+PO,Pompey,2009,16.62,4,9
+PO,Pompey,2010,16.25,11,9
+PO,Pompey,2011,3.93,4,9
+PO,Pompey,2012,18.23,9,9
+PO,Pompey,2013,10.27,6,9
+PO,Pompey,2014,16.1,11,9
+PO,Pompey,2015,29.92,4,9
+PO,Pompey,2016,17.18,6,9
+PO,Pompey,2017,23.33,5,9
+PO,Pompey,2018,20.33,9,9
+PO,Pompey,2019,19.35,2,9
+PO,Pompey,2020,27.64,11,9
+PO,Pompey,2021,39.89,3,9
+PO,Pompey,2022,35.1,9,9
+PO,Pompey,2023,35.57,15,9
+SW,Swain,1993,33.45,9,10
+SW,Swain,1994,27.49,10,10
+SW,Swain,1995,27.17,12,10
+SW,Swain,1996,34.83,13,10
+SW,Swain,1997,25.89,7,10
+SW,Swain,1998,27.97,7,10
+SW,Swain,1999,28.71,7,10
+SW,Swain,2000,28.91,7,10
+SW,Swain,2001,25.49,7,10
+SW,Swain,2002,21.12,7,10
+SW,Swain,2003,18.75,7,10
+SW,Swain,2004,17.43,7,10
+SW,Swain,2005,30.07,13,10
+SW,Swain,2006,21.28,17,10
+SW,Swain,2007,22.37,6,10
+SW,Swain,2008,21.65,15,10
+SW,Swain,2009,22.55,7,10
+SW,Swain,2010,14.55,13,10
+SW,Swain,2011,11.76,7,10
+SW,Swain,2012,16.62,13,10
+SW,Swain,2013,16.1,7,10
+SW,Swain,2014,27.61,12,10
+SW,Swain,2015,27.22,7,10
+SW,Swain,2016,34.37,12,10
+SW,Swain,2017,41.5,7,10
+SW,Swain,2018,32.8,10,10
+SW,Swain,2019,20.12,6,10
+SW,Swain,2020,23.13,8,10
+SW,Swain,2021,28.13,7,10
+SW,Swain,2022,21.15,12,10
+SW,Swain,2023,22.38,9,10
+CB,Capricorn-Bunker,1993,21.1,4,11
+CB,Capricorn-Bunker,1994,19.36,3,11
+CB,Capricorn-Bunker,1995,24.51,3,11
+CB,Capricorn-Bunker,1996,26.84,5,11
+CB,Capricorn-Bunker,1997,31.41,5,11
+CB,Capricorn-Bunker,1998,34.45,4,11
+CB,Capricorn-Bunker,1999,43.68,4,11
+CB,Capricorn-Bunker,2000,45.79,4,11
+CB,Capricorn-Bunker,2001,42.77,4,11
+CB,Capricorn-Bunker,2002,46.8,4,11
+CB,Capricorn-Bunker,2003,44.1,4,11
+CB,Capricorn-Bunker,2004,38.74,4,11
+CB,Capricorn-Bunker,2005,34.82,4,11
+CB,Capricorn-Bunker,2006,42.94,8,11
+CB,Capricorn-Bunker,2007,35.23,4,11
+CB,Capricorn-Bunker,2008,32.24,7,11
+CB,Capricorn-Bunker,2009,23.32,4,11
+CB,Capricorn-Bunker,2010,12.98,8,11
+CB,Capricorn-Bunker,2011,16.03,3,11
+CB,Capricorn-Bunker,2012,14.77,6,11
+CB,Capricorn-Bunker,2013,20.97,4,11
+CB,Capricorn-Bunker,2014,19.88,8,11
+CB,Capricorn-Bunker,2015,30.63,2,11
+CB,Capricorn-Bunker,2016,34.08,7,11
+CB,Capricorn-Bunker,2017,45.04,4,11
+CB,Capricorn-Bunker,2018,40.37,7,11
+CB,Capricorn-Bunker,2019,49.63,4,11
+CB,Capricorn-Bunker,2020,44.9,8,11
+CB,Capricorn-Bunker,2021,52.52,10,11
+CB,Capricorn-Bunker,2022,56.69,7,11
+CB,Capricorn-Bunker,2023,51.84,7,11

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#0d2a3d",
+  "config": {
+    "view": { "stroke": "#1a3a4a" },
+    "axisX": {
+      "labelColor": "#c8dce8", "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a", "tickColor": "#2a6080",
+      "domainColor": "#2a6080", "labelFontSize": 10, "titleFontSize": 11
+    },
+    "axisY": {
+      "labelColor": "#c8dce8", "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a", "tickColor": "#2a6080",
+      "domainColor": "#2a6080", "labelFontSize": 10, "titleFontSize": 11
+    },
+    "header": {
+      "labelColor": "#f0f4f8",
+      "labelFontSize": 14,
+      "labelFontWeight": "bold"
+    }
+  },
+  "data": { "url": "../idiom8_coral_cover_regions.csv" },
+  "facet": {
+    "field": "region",
+    "type": "nominal",
+    "sort": ["Northern", "Central", "Southern"],
+    "header": { "title": null }
+  },
+  "spec": {
+    "width": 240,
+    "height": 180,
+    "layer": [
+      {
+        "data": {
+          "values": [
+            { "year_start": 1998, "year_end": 1999 },
+            { "year_start": 2002, "year_end": 2003 },
+            { "year_start": 2016, "year_end": 2018 },
+            { "year_start": 2020, "year_end": 2021 },
+            { "year_start": 2022, "year_end": 2023 }
+          ]
+        },
+        "mark": { "type": "rect", "opacity": 0.15, "color": "#e05c20" },
+        "encoding": {
+          "x": {
+            "field": "year_start", "type": "quantitative",
+            "scale": { "domain": [1992, 2023], "zero": false },
+            "axis": { "format": "d" }
+          },
+          "x2": { "field": "year_end", "type": "quantitative" }
+        }
+      },
+      {
+        "mark": {
+          "type": "area", "interpolate": "monotone",
+          "opacity": 0.15, "color": "#48cae4", "line": false
+        },
+        "encoding": {
+          "x": {
+            "field": "year", "type": "quantitative", "title": "Year",
+            "axis": { "format": "d", "tickCount": 5 },
+            "scale": { "domain": [1992, 2023], "zero": false }
+          },
+          "y": {
+            "field": "mean_coral_cover", "type": "quantitative",
+            "title": "Mean hard coral cover (%)",
+            "scale": { "domain": [0, 55] }
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line", "interpolate": "monotone",
+          "color": "#48cae4", "strokeWidth": 2.5,
+          "point": { "color": "#48cae4", "size": 25, "filled": true }
+        },
+        "encoding": {
+          "x": {
+            "field": "year", "type": "quantitative",
+            "scale": { "domain": [1992, 2023], "zero": false },
+            "axis": { "format": "d" }
+          },
+          "y": { "field": "mean_coral_cover", "type": "quantitative" },
+          "tooltip": [
+            { "field": "region", "type": "nominal", "title": "Region" },
+            { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
+            { "field": "mean_coral_cover", "type": "quantitative", "title": "Mean hard coral cover (%)", "format": ".1f" },
+            { "field": "n_reefs", "type": "quantitative", "title": "Reefs surveyed" }
+          ]
+        }
+      },
+      {
+        "data": { "values": [{ "threshold": 30 }] },
+        "mark": {
+          "type": "rule", "color": "#ffffff",
+          "opacity": 0.3, "strokeDash": [4, 4], "strokeWidth": 1
+        },
+        "encoding": { "y": { "field": "threshold", "type": "quantitative" } }
+      }
+    ]
+  },
+  "resolve": { "scale": { "y": "shared" } }
+}

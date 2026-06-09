@@ -1,0 +1,163 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 940,
+  "height": 360,
+  "background": "#0d2a3d",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axisX": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#0d2a3d",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "labelAngle": -45
+    },
+    "axisY": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#0d2a3d",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelLimit": 180
+    },
+    "legend": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  },
+  "data": {
+    "url": "idiom9_reef_health_strip.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Survey Year",
+          "axis": {
+            "labelAngle": -45
+          }
+        },
+        "y": {
+          "field": "sector_name",
+          "type": "nominal",
+          "title": "Sector (North â†’ South)",
+          "sort": {
+            "field": "order",
+            "order": "ascending"
+          }
+        },
+        "color": {
+          "field": "mean_coral",
+          "type": "quantitative",
+          "title": "Mean live coral (%)",
+          "scale": {
+            "domain": [
+              0,
+              15,
+              30,
+              50,
+              87
+            ],
+            "range": [
+              "#8a1010",
+              "#e05c20",
+              "#ffffff",
+              "#7dd3fc",
+              "#023e8a"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 300,
+            "gradientThickness": 14,
+            "title": "Mean live coral cover (%)"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "sector_name",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "mean_coral",
+            "type": "quantitative",
+            "title": "Mean coral cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "n_reefs",
+            "type": "quantitative",
+            "title": "Reefs surveyed"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": "1998"
+          },
+          {
+            "year": "2002"
+          },
+          {
+            "year": "2016"
+          },
+          {
+            "year": "2017"
+          },
+          {
+            "year": "2020"
+          },
+          {
+            "year": "2022"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#ffffff",
+        "opacity": 0.5,
+        "strokeWidth": 1.5,
+        "strokeDash": [
+          4,
+          3
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        }
+      }
+    }
+  ],
+  "padding": {
+    "top": 78,
+    "right": 18,
+    "bottom": 8,
+    "left": 4
+  }
+}

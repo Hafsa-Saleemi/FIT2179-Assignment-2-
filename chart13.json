@@ -1,0 +1,231 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 280,
+  "background": "#0d2a3d",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axisX": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#1a3a4a",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "axisY": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "gridColor": "#0d2a3d",
+      "tickColor": "#2a6080",
+      "domainColor": "#2a6080",
+      "labelFontSize": 13,
+      "titleFontSize": 12,
+      "labelFontWeight": "bold"
+    },
+    "legend": {
+      "labelColor": "#c8dce8",
+      "titleColor": "#c8dce8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  },
+  "data": {
+    "url": "idiom13_disturbance_timeline.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 1,
+        "opacity": 0.1,
+        "color": "#c8dce8"
+      },
+      "encoding": {
+        "y": {
+          "field": "type",
+          "type": "nominal",
+          "sort": [
+            "Bleaching",
+            "Cyclone",
+            "COTS"
+          ]
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.9,
+        "stroke": "#0d2a3d",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "tickCount": 10
+          },
+          "scale": {
+            "domain": [
+              1993,
+              2033
+            ]
+          }
+        },
+        "y": {
+          "field": "type",
+          "type": "nominal",
+          "title": "Disturbance type",
+          "sort": [
+            "Bleaching",
+            "Cyclone",
+            "COTS"
+          ]
+        },
+        "size": {
+          "field": "severity",
+          "type": "quantitative",
+          "title": "Severity",
+          "scale": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "range": [
+              100,
+              250,
+              500
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "offset": 8,
+            "padding": 5,
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "title": "Severity (1=low, 3=high)",
+            "labelFontSize": 10,
+            "titleFontSize": 10,
+            "symbolSize": 45,
+            "fillColor": "rgba(13,42,61,0.86)",
+            "strokeColor": "#2a6080",
+            "cornerRadius": 8
+          }
+        },
+        "color": {
+          "value": "#0096c7"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "type",
+            "type": "nominal",
+            "title": "Type"
+          },
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Event"
+          },
+          {
+            "field": "severity",
+            "type": "quantitative",
+            "title": "Severity (1\u20133)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2022.2,
+            "type": "Bleaching"
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "triangle-down",
+        "filled": true,
+        "size": 26,
+        "color": "#4f7cff",
+        "stroke": "#0d2a3d",
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "type",
+          "type": "nominal",
+          "sort": [
+            "Bleaching",
+            "Cyclone",
+            "COTS"
+          ]
+        },
+        "yOffset": {
+          "value": 2
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2022.2,
+            "type": "Bleaching",
+            "label": "Five bleaching events\nin eight years"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dy": 12,
+        "fontSize": 9,
+        "color": "#ff9e4f",
+        "lineBreak": "\n",
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "type",
+          "type": "nominal",
+          "sort": [
+            "Bleaching",
+            "Cyclone",
+            "COTS"
+          ]
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

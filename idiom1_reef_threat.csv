@@ -1,0 +1,16 @@
+name,iso_a3,lat,lon,reef_area_sqkm,local_threatened_pct,local_plus_thermal_threatened_pct,coastal_pop_30km_thousands,reef_in_mpa_pct
+Australia,AUS,-18.0,147.0,41942,14,40,3507,75
+Indonesia,IDN,-2.5,118.0,39538,91,92,59784,25
+Philippines,PHL,12.0,122.0,22484,98,99,41283,7
+Papua New Guinea,PNG,-5.5,147.0,14535,55,78,1570,4
+New Caledonia,NCL,-21.5,165.5,7450,37,57,210,2
+Solomon Islands,SLB,-8.5,159.5,6743,71,82,540,6
+Fiji,FJI,-17.7,178.0,6704,66,80,690,32
+French Polynesia,PYF,-17.7,-149.5,5981,24,33,269,1
+Maldives,MDV,3.5,73.0,5281,38,87,357,0.5
+Saudi Arabia,SAU,21.0,38.5,5273,61,73,7223,1
+Federated States of Micronesia,FSM,6.9,158.2,4925,30,52,100,0.5
+Cuba,CUB,21.5,-78.5,4920,95,97,4430,14
+Bahamas,BHS,24.5,-77.5,4081,60,79,303,3
+Madagascar,MDG,-20.0,45.5,3934,87,94,2235,2
+Hawaii (US),HAW,20.5,-157.5,3834,17,28,1209,85

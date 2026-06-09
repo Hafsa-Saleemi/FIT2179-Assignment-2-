@@ -1,0 +1,177 @@
+﻿{
+    "$schema":  "https://vega.github.io/schema/vega-lite/v5.json",
+    "width":  820,
+    "height":  380,
+    "background":  "#0d2a3d",
+    "config":  {
+                   "view":  {
+                                "stroke":  null
+                            },
+                   "axisX":  {
+                                 "labelColor":  "#c8dce8",
+                                 "titleColor":  "#c8dce8",
+                                 "gridColor":  "#1a3a4a",
+                                 "tickColor":  "#2a6080",
+                                 "domainColor":  "#2a6080",
+                                 "labelFontSize":  11,
+                                 "titleFontSize":  12
+                             },
+                   "axisY":  {
+                                 "labelColor":  "#c8dce8",
+                                 "titleColor":  "#c8dce8",
+                                 "gridColor":  "#0d2a3d",
+                                 "tickColor":  "#2a6080",
+                                 "domainColor":  "#2a6080",
+                                 "labelFontSize":  13,
+                                 "titleFontSize":  12,
+                                 "labelFontWeight":  "bold"
+                             },
+                   "legend":  {
+                                  "disable":  true
+                              }
+               },
+    "data":  {
+                 "url":  "idiom12_recovery_windows.csv"
+             },
+    "layer":  [
+                  {
+                      "mark":  {
+                                   "type":  "bar",
+                                   "cornerRadiusEnd":  4
+                               },
+                      "encoding":  {
+                                       "y":  {
+                                                 "field":  "label",
+                                                 "type":  "nominal",
+                                                 "title":  "Bleaching event window",
+                                                 "sort":  [
+                                                              "1998 → 2002",
+                                                              "2002 → 2016",
+                                                              "2016 → 2017",
+                                                              "2017 → 2020",
+                                                              "2020 → 2022",
+                                                              "2022 → 2024",
+                                                              "2024 → 2025"
+                                                          ]
+                                             },
+                                       "x":  {
+                                                 "field":  "years_between",
+                                                 "type":  "quantitative",
+                                                 "title":  "Years until next bleaching event",
+                                                 "scale":  {
+                                                               "domain":  [
+                                                                              0,
+                                                                              16
+                                                                          ]
+                                                           }
+                                             },
+                                       "color":  {
+                                                     "value":  "#0096c7"
+                                                 },
+                                       "tooltip":  [
+                                                       {
+                                                           "field":  "label",
+                                                           "type":  "nominal",
+                                                           "title":  "Window"
+                                                       },
+                                                       {
+                                                           "field":  "years_between",
+                                                           "type":  "quantitative",
+                                                           "title":  "Years to recover"
+                                                       },
+                                                       {
+                                                           "field":  "event_year",
+                                                           "type":  "quantitative",
+                                                           "title":  "Bleaching year",
+                                                           "format":  "d"
+                                                       },
+                                                       {
+                                                           "field":  "next_event",
+                                                           "type":  "quantitative",
+                                                           "title":  "Next bleaching year",
+                                                           "format":  "d"
+                                                       }
+                                                   ]
+                                   }
+                  },
+                  {
+                      "mark":  {
+                                   "type":  "text",
+                                   "align":  "left",
+                                   "dx":  6,
+                                   "fontSize":  13,
+                                   "fontWeight":  "bold"
+                               },
+                      "encoding":  {
+                                       "y":  {
+                                                 "field":  "label",
+                                                 "type":  "nominal",
+                                                 "sort":  [
+                                                              "1998 → 2002",
+                                                              "2002 → 2016",
+                                                              "2016 → 2017",
+                                                              "2017 → 2020",
+                                                              "2020 → 2022",
+                                                              "2022 → 2024",
+                                                              "2024 → 2025"
+                                                          ]
+                                             },
+                                       "x":  {
+                                                 "field":  "years_between",
+                                                 "type":  "quantitative"
+                                             },
+                                       "text":  {
+                                                    "field":  "years_between",
+                                                    "type":  "quantitative",
+                                                    "format":  "d"
+                                                },
+                                       "color":  {
+                                                     "value":  "#f0f4f8"
+                                                 }
+                                   }
+                  },
+                  {
+                      "mark":  {
+                                   "type":  "rule",
+                                   "color":  "#ffffff",
+                                   "opacity":  0.2,
+                                   "strokeDash":  [
+                                                      4,
+                                                      4
+                                                  ],
+                                   "strokeWidth":  1
+                               },
+                      "encoding":  {
+                                       "x":  {
+                                                 "datum":  10,
+                                                 "type":  "quantitative"
+                                             }
+                                   }
+                  },
+                  {
+                      "mark":  {
+                                   "type":  "text",
+                                   "align":  "right",
+                                   "dx":  -4,
+                                   "dy":  -8,
+                                   "fontSize":  10,
+                                   "opacity":  0.5
+                               },
+                      "encoding":  {
+                                       "x":  {
+                                                 "datum":  10,
+                                                 "type":  "quantitative"
+                                             },
+                                       "y":  {
+                                                 "value":  10
+                                             },
+                                       "text":  {
+                                                    "value":  "10 years = minimum recovery time"
+                                                },
+                                       "color":  {
+                                                     "value":  "#c8dce8"
+                                                 }
+                                   }
+                  }
+              ]
+}
