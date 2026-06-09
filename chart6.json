@@ -3,7 +3,7 @@
   "width": 560,
   "height": 380,
   "background": "#0d2a3d",
-  "data": { "url": "../idiom6_sst_bleaching.csv" },
+  "data": { "url": "idiom6_sst_bleaching.csv" },
   "layer": [
     {
       "mark": { "type": "bar", "opacity": 0.65, "color": "#ffb347" },
